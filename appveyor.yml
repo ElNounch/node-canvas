@@ -20,7 +20,6 @@ install:
   # Update npm itself
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
   - npm install -g npm
-
   - ps: |
      $env:GTK = $env:APPVEYOR_BUILD_FOLDER + '\local-build\GTK'
 
@@ -37,7 +36,8 @@ install:
      }
 
 build_script:
-  - node-gyp configure build
+  - npm install
+#  - node-gyp configure build
 
 test_script:
   # Output useful info for debugging
