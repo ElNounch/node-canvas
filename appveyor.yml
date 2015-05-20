@@ -34,14 +34,13 @@ install:
        $webclient.DownloadFile( $source, $zipFile )
        & 7z x $zipFile ('-o' + $env:GTK)
      }
-
-build_script:
   - if %platform% == x64 ( CALL "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64 )
   - if %platform% == x86 ( CALL "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64_x86 )
   # Io.js support
   - npm install node-gyp-install
   - node-gyp-install
-  
+
+build_script:
   - npm install --msvs_version=2013
 #  - node-gyp configure build
 
