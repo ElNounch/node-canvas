@@ -18,8 +18,9 @@ before_install:
   # Update npm itself
   - npm install -g npm
   - PATH="`npm bin -g`:`npm bin`:$PATH"
-  - export LD_LIBRARY_PATH="$PWD/local-build:$LD_LIBRARY_PATH"
-  - sh install "$PWD/local-build"
+  - export LD_LIBRARY_PATH="$TRAVIS_BUILD_DIR/local-build/bin:$TRAVIS_BUILD_DIR/local-build/lib:$LD_LIBRARY_PATH"
+  - export CPLUS_INCLUDE_PATH="$TRAVIS_BUILD_DIR/local-build/include"
+  - sh install "$TRAVIS_BUILD_DIR/local-build"
 
 # Caching npm parts
 cache:
